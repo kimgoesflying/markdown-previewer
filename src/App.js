@@ -61,15 +61,15 @@ export default class App extends Component {
   }
 
   render() {
-    let expandEditorClass = 'col-md-6';
-    let expandPreviewClass = 'col-md-6 d-none d-md-block';
+    let editorClass = 'col-md-6';
+    let previewClass = 'col-md-6 d-none d-md-block';
 
     if (this.state.editorExpand) {
-      expandEditorClass = 'col-md-12';
-      expandPreviewClass = 'd-none';
+      editorClass = 'col-md-12';
+      previewClass = 'd-none';
     } else if (this.state.previewExpand) {
-      expandEditorClass = 'd-none';
-      expandPreviewClass = 'col-md-12';
+      editorClass = 'd-none';
+      previewClass = 'col-md-12';
     }
 
     return (
@@ -78,12 +78,12 @@ export default class App extends Component {
 
         <Container>
           <div className="row mt-4">
-            <div className={expandEditorClass}>
+            <div className={editorClass}>
               <EditorToolbar
                 name="Markdown"
-                expand={this.toggleEditorSize}
+                handleExpand={this.toggleEditorSize}
+                handleView={this.toggleView}
                 viewButton={this.state.viewButton}
-                view={this.toggleView}
                 isExpand={this.state.editorExpand}
               />
               <div className="input border border-top-0">
@@ -96,12 +96,12 @@ export default class App extends Component {
               </div>
             </div>
 
-            <div className={`${expandPreviewClass}`}>
+            <div className={`${previewClass}`}>
               <EditorToolbar
                 name="Preview"
-                expand={this.togglePreviewSize}
+                handleExpand={this.togglePreviewSize}
+                handleView={this.toggleView}
                 viewButton={this.state.viewButton}
-                view={this.toggleView}
                 isExpand={this.state.previewExpand}
               />
               <div

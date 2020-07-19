@@ -29,3 +29,8 @@ blockquote {
   padding: 10px;
   overflow: auto;
 }
+
+.toolbar .btn-light:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,26 +1,32 @@
 import React from 'react';
 import { Button } from 'react-bootstrap/';
 
-const EditorToolbar = ({ name, expand, viewButton, view, isExpand }) => {
-  let viewButtonClass = viewButton ? 'd-inlinek' : 'd-inline d-md-none';
+const EditorToolbar = ({
+  name,
+  handleExpand,
+  handleView,
+  viewButton,
+  isExpand,
+}) => {
+  let viewButtonClass = viewButton ? 'd-inline' : 'd-inline d-md-none';
 
   return (
-    <div className="border d-flex p-2 justify-content-between align-items-center bg-light">
+    <div className="toolbar bg-light border d-flex p-2 justify-content-between align-items-center">
       {name}
       <div>
         <Button
           className={viewButtonClass}
           type="button"
           variant="light"
-          onClick={() => view()}
+          onClick={() => handleView()}
         >
           <i className="far fa-eye"></i>
         </Button>
         <Button
-          className="d-none d-md-inline"
+          className="d-none d-md-inline "
           type="button"
           variant="light"
-          onClick={() => expand()}
+          onClick={() => handleExpand()}
         >
           {isExpand ? (
             <i class="fas fa-compress-alt"></i>
