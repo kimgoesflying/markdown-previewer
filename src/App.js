@@ -15,7 +15,7 @@ export default class App extends Component {
       editorExpand: false,
       previewExpand: false,
       markdown:
-        '### Responsive Markdown Previewer\n\n---\n\n##### Created by: [Elizarova](https://github.com/Elizarova "Github")',
+        '### Markdown Previewer\n\n---\n\n##### Created by: [Elizarova](https://github.com/Elizarova "Github")',
     };
   }
 
@@ -50,9 +50,26 @@ export default class App extends Component {
   }
 
   resize() {
-    let currentEditorExpand = window.innerWidth <= 760;
-    if (currentEditorExpand !== this.state.editorExpand) {
-      this.setState({ editorExpand: currentEditorExpand });
+    if (window.innerWidth <= 760) {
+      if (this.state.editorExpand === this.state.previewExpand) {
+        this.setState({
+          previewExpand: !this.state.previewExpand,
+          editorExpand: this.state.editorExpand,
+          viewButton: true,
+        });
+      } else {
+        this.setState({
+          previewExpand: this.state.previewExpand,
+          editorExpand: this.state.editorExpand,
+          viewButton: true,
+        });
+      }
+    } else {
+      this.setState({
+        previewExpand: false,
+        editorExpand: false,
+        viewButton: false,
+      });
     }
   }
 

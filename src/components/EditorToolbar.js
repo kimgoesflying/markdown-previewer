@@ -29,7 +29,7 @@ const EditorToolbar = ({
           onClick={() => handleExpand()}
         >
           {isExpand ? (
-            <i class="fas fa-compress-alt"></i>
+            <i className="fas fa-compress-alt"></i>
           ) : (
             <i className="fas fa-expand-alt"></i>
           )}
