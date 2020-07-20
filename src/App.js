@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap/';
 
 import marked from 'marked';
@@ -32,38 +32,42 @@ export default function App() {
     setEditorExpand(!editorExpand);
   };
 
-  // componentDidMount() {
-  //   window.addEventListener('resize', this.resize.bind(this));
-  //   this.resize();
-  // }
+  useEffect(() => {
+    const load = () => {
+      if (window && window.innerWidth <= 760) {
+        setPreviewExpand(!previewExpand);
+        setEditorExpand(editorExpand);
+        setViewButton(!viewButton);
+      }
+    };
+    window.addEventListener('load', load);
 
-  // resize() {
-  //   if (window.innerWidth <= 760) {
-  //     if (this.state.editorExpand === this.state.previewExpand) {
-  //       this.setState({
-  //         previewExpand: !this.state.previewExpand,
-  //         editorExpand: this.state.editorExpand,
-  //         viewButton: true,
-  //       });
-  //     } else {
-  //       this.setState({
-  //         previewExpand: this.state.previewExpand,
-  //         editorExpand: this.state.editorExpand,
-  //         viewButton: true,
-  //       });
-  //     }
-  //   } else {
-  //     this.setState({
-  //       previewExpand: false,
-  //       editorExpand: false,
-  //       viewButton: false,
-  //     });
-  //   }
-  // }
+    return () => window.removeEventListener('load', load);
+  }, [previewExpand, editorExpand, viewButton]);
 
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.resize.bind(this));
-  // }
+  useEffect(() => {
+    const resize = () => {
+      if (window && window.innerWidth <= 760) {
+        if (editorExpand === previewExpand) {
+          setPreviewExpand(!previewExpand);
+          setEditorExpand(editorExpand);
+          setViewButton(true);
+        } else {
+          setPreviewExpand(previewExpand);
+          setEditorExpand(editorExpand);
+          setViewButton(true);
+        }
+      } else {
+        setPreviewExpand(false);
+        setEditorExpand(false);
+        setViewButton(false);
+      }
+    };
+
+    window.addEventListener('resize', resize);
+
+    return () => window.removeEventListener('resize', resize);
+  }, [previewExpand, editorExpand]);
 
   let editorClass = 'col-md-6';
   let previewClass = 'col-md-6 d-none d-md-block';
