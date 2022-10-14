@@ -10,11 +10,11 @@ const NavbarComponent = () => {
 
   return (
     <Navbar bg="dark" variant="dark" className="justify-content-between">
-      <Navbar.Brand className="ml-2" href="/">
+      <Navbar.Brand className="mx-3" href="/">
         Markdown Previewer
       </Navbar.Brand>
       <HelpModalComponent show={show} handleClose={handleClose} />
-      <Navbar.Text className="mr-2">
+      <Navbar.Text className="mx-3">
         <a href="#!" onClick={handleShow}>
           <i className="far fa-question-circle fa-2x"></i>
         </a>

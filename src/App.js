@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap/';
 
-import marked from 'marked';
+import { marked } from 'marked';
 import NavbarComponent from './components/NavbarComponent';
 import EditorToolbar from './components/EditorToolbar';
 
@@ -16,7 +16,7 @@ export default function App() {
   const [editorExpand, setEditorExpand] = useState(false);
   const [previewExpand, setPreviewExpand] = useState(false);
   const [markdown, setMarkdown] = useState(
-    '# Markdown Previewer\n---\n## Syntax Guide\n\n#### Emphasis\n*This text will be italic*\n**This text will be bold**\n_You **can** combine them_\n\n#### Lists\n* Item 1\n* Item 2\n  * Item 2a\n  * Item 2b\n\n#### Blockquotes\n> Dorothy followed her through many of the beautiful rooms in her castle.\n\n#### Images\n![GitHub Logo](/images/logo.png)\n\n#### Inline code\nI think you should use an `<addr>` element here instead.\n\n#### Code Blocks\n```\n<html>\n  <head>\n    <title>Test</title>\n  </head>\n```\n---\n##### Created by: [Elizarova](https://github.com/Elizarova "Github") 2020'
+    '# Markdown Previewer\n---\n## Syntax Guide\n\n#### Emphasis\n*This text will be italic*\n**This text will be bold**\n_You **can** combine them_\n\n#### Lists\n* Item 1\n* Item 2\n  * Item 2a\n  * Item 2b\n\n#### Blockquotes\n> Dorothy followed her through many of the beautiful rooms in her castle.\n\n#### Images\n![GitHub Logo](/images/logo.png)\n\n#### Inline code\nI think you should use an `<addr>` element here instead.\n\n#### Code Blocks\n```\n<html>\n  <head>\n    <title>Test</title>\n  </head>\n```\n---\n##### Created by: [KimGoesFlying](https://github.com/KimGoesFlying "Github") 2020'
   );
 
   const updateMarkdown = (markdown) => setMarkdown(markdown);
